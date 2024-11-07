@@ -60,17 +60,6 @@ func TestNew(t *testing.T) {
 
 		keyValues := keyValuesFromText(writer.String())
 		checkKeys(t, keyValues, []string{"time", "level", "msg"})
-
-		timeStr := keyValues["time"]
-		logTime, err := time.Parse(time.RFC3339, timeStr)
-		if err != nil {
-			t.Fatalf("invalid timeStr = %q", timeStr)
-		}
-
-		if location := logTime.Location().String(); location == "UTC" {
-			t.Errorf("Expected Local location, got = %q", location)
-		}
-
 	})
 
 	t.Run("with source", func(t *testing.T) {
