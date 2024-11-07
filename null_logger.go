@@ -5,6 +5,7 @@ import (
 	"log/slog"
 )
 
+// NewNullLogger creates an instance of slog.Logger that doesn't produce any output
 func NewNullLogger() *slog.Logger {
 	return slog.New(&nullHandler{})
 }
